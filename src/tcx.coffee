@@ -80,6 +80,8 @@ class Parser
           @curr_tkpt.dist_meters = @curr_text
         when "Activities|Activity|Lap|Track|Trackpoint|Extensions|TPX|RunCadence"
           @curr_tkpt.run_cadence = @curr_text
+        when "Activities|Activity|Lap|Track|Trackpoint|Cadence"
+          @curr_tkpt.cadence = @curr_text
         when "Activities|Activity|Lap|Track|Trackpoint|HeartRateBpm|Value"
           @curr_tkpt.hr_bpm = @curr_text
         when "Activities|Activity|Lap|Track|Trackpoint|Position|LatitudeDegrees"
@@ -90,6 +92,10 @@ class Parser
           @curr_tkpt.time = @curr_text
         when "Activities|Activity|Lap|TriggerMethod"
           x = 0
+        when "Activities|Activity|Lap|Track|Trackpoint|Extensions|ns3:TPX|ns3:Watts"
+          @curr_tkpt.watts = @curr_text
+        when "Activities|Activity|Lap|Track|Trackpoint|Extensions|ns3:TPX|ns3:Speed"
+          @curr_tkpt.speed = @curr_text
 
         # Author info
         when "Author|Build|Version|BuildMajor"
@@ -123,6 +129,9 @@ class Parser
 
   parse_file: (filename) =>
     xml_str = fs.readFileSync(filename)
+    @parser.parse(xml_str)
+
+  parse_xml: (xml_str) =>
     @parser.parse(xml_str)
 
   curr_path: ->
