@@ -20,6 +20,8 @@ Require tcx-js in your code:
 tcx = require("tcx-js")
 ```
 
+compile with "grunt"
+
 #### Parse a TCX file from Garmin Connect
 
 Parsing elapsed time is typically sub-second, even for a marathon run.
