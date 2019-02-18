@@ -75,27 +75,27 @@ class Parser
 
         # Trackpoints
         when "Activities|Activity|Lap|Track|Trackpoint|AltitudeMeters"
-          @curr_tkpt.alt_meters = @curr_text
+          @curr_tkpt.alt_meters = parseFloat(@curr_text)
         when "Activities|Activity|Lap|Track|Trackpoint|DistanceMeters"
-          @curr_tkpt.dist_meters = @curr_text
+          @curr_tkpt.dist_meters = parseFloat(@curr_text)
         when "Activities|Activity|Lap|Track|Trackpoint|Extensions|TPX|RunCadence"
-          @curr_tkpt.run_cadence = @curr_text
+          @curr_tkpt.run_cadence = parseInt(@curr_text)
         when "Activities|Activity|Lap|Track|Trackpoint|Cadence"
-          @curr_tkpt.cadence = @curr_text
+          @curr_tkpt.cadence = parseInt(@curr_text)
         when "Activities|Activity|Lap|Track|Trackpoint|HeartRateBpm|Value"
-          @curr_tkpt.hr_bpm = @curr_text
+          @curr_tkpt.hr_bpm = parseInt(@curr_text)
         when "Activities|Activity|Lap|Track|Trackpoint|Position|LatitudeDegrees"
-          @curr_tkpt.lat = @curr_text
+          @curr_tkpt.lat = parseFloat(@curr_text)
         when "Activities|Activity|Lap|Track|Trackpoint|Position|LongitudeDegrees"
-          @curr_tkpt.lng = @curr_text
+          @curr_tkpt.lng = parseFloat(@curr_text)
         when "Activities|Activity|Lap|Track|Trackpoint|Time"
           @curr_tkpt.time = @curr_text
         when "Activities|Activity|Lap|TriggerMethod"
           x = 0
         when "Activities|Activity|Lap|Track|Trackpoint|Extensions|ns3:TPX|ns3:Watts"
-          @curr_tkpt.watts = @curr_text
+          @curr_tkpt.watts = parseInt(@curr_text)
         when "Activities|Activity|Lap|Track|Trackpoint|Extensions|ns3:TPX|ns3:Speed"
-          @curr_tkpt.speed = @curr_text
+          @curr_tkpt.speed = parseFloat(@curr_text)
 
         # Author info
         when "Author|Build|Version|BuildMajor"
